@@ -5,8 +5,9 @@ export default class AddStudents extends Component {
     super(props);
 
     this.initialState = {
-      name: "",
-      job: ""
+      firstName: "",
+      lastName: "",
+      grade: ""
     };
 
     this.state = this.initialState;
@@ -25,22 +26,35 @@ export default class AddStudents extends Component {
     this.setState(this.initialState);
   };
 
+  handleKeyPress = (event) => {
+    if(event.key == 'Enter'){
+      console.log('enter press here! ')
+      this.submitForm()
+    }
+  }
   render() {
-    const { name, job } = this.state;
+    const { firstName, lastName, grade } = this.state;
     return (
-      <form>
-        <label>Name</label>
+      <form tabIndex="0" className="studentsForm"  onKeyPress={this.handleKeyPress}>
         <input
           type="text"
-          name="name"
-          value={name}
+          placeholder="Name"
+          name="firstName"
+          value={firstName}
           onChange={this.handleChange}
         />
-        <label>Job</label>
         <input
           type="text"
-          name="job"
-          value={job}
+          placeholder="Last Name"
+          name="lastName"
+          value={lastName}
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Grade Level"
+          name="grade"
+          value={grade}
           onChange={this.handleChange}
         />
         <input type="button" value="Submit" onClick={this.submitForm} />

@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Poppins');
+
 :root {
-  --sideBar-color: #141d26;
-  --secondary-color: #272C39;
+  --sideBar-color: #252C46;
+  --contentBg-color: #1B2137;
 }
 
 body {
