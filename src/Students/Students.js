@@ -3,16 +3,9 @@ import { TableHeader, TableBody } from "./Table.js";
 import AddStudents from "./Add Students.js";
 import "./Students.css";
 
-var testObj = {
-  firstName: "John",
-  lastName: "Smith",
-  grade: "12"
-};
 
-var testArray = [];
-
-var retrieveArray = localStorage.getItem("test");
-console.log(retrieveArray);
+var persistentArray = [];
+var retrieveArray = localStorage.getItem("studentsArray");
 
 export default class Students extends Component {
   state = {
@@ -21,7 +14,9 @@ export default class Students extends Component {
 
   removeStudents = index => {
     const { students } = this.state;
-
+    var removedStudentsArr = JSON.parse(retrieveArray)
+    removedStudentsArr.splice(index, 1)
+    window.localStorage.setItem("studentsArray", JSON.stringify(removedStudentsArr));
     this.setState({
       students: students.filter((character, i) => {
         return i !== index;
@@ -30,11 +25,11 @@ export default class Students extends Component {
   };
 
   handleSubmit = students => {
-    testArray.push(students);
-    window.localStorage.setItem("test", JSON.stringify(testArray));
-    retrieveArray = localStorage.getItem("test");
+    persistentArray.push(students);
+    window.localStorage.setItem("studentsArray", JSON.stringify(persistentArray));
+    retrieveArray = localStorage.getItem("studentsArray");
     this.setState({ students: JSON.parse(retrieveArray) }, () => {
-      console.log(testArray);
+      console.log(persistentArray);
     });
   };
 

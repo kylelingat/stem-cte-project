@@ -28,7 +28,6 @@ export default class AddStudents extends Component {
 
   handleKeyPress = event => {
     if (event.key == "Enter") {
-      console.log("enter press here! ");
       this.submitForm();
     }
   };
