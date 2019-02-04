@@ -14,15 +14,19 @@ export default class Students extends Component {
   };
 
   removeStudents = index => {
+    var retrieveStudArr = JSON.parse(localStorage.getItem("studentArray"))
+    retrieveStudArr.splice(index, 1)
+    console.log(retrieveStudArr)
+    localStorage.setItem('studentArray', JSON.stringify(retrieveStudArr));
+    
+    
+    
     const { students } = this.state;
-    // var removedStudentsArr = JSON.parse(retrieveArray)
-    // removedStudentsArr.splice(index, 1)
-    // window.localStorage.setItem("studentsArray", JSON.stringify(removedStudentsArr));
-    // this.setState({
-    //   students: students.filter((character, i) => {
-    //     return i !== index;
-    //   })
-    // });
+    this.setState({                                       //client side removal
+      students: students.filter((character, i) => { 
+        return i !== index;
+      })
+    });
   };
 
   
