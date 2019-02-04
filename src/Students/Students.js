@@ -9,7 +9,7 @@ import "./Students.css";
 
 export default class Students extends Component {
   state = {
-    // students: JSON.parse(retrieveArray),
+    students: JSON.parse(localStorage.getItem('studentArray') || "[]"),
     hasArray: localStorage.getItem("hasStudentArray")
   };
 
@@ -31,6 +31,7 @@ export default class Students extends Component {
 
     studentArray.push(students);
     localStorage.setItem('studentArray', JSON.stringify(studentArray));
+    this.setState({students: JSON.parse(localStorage.getItem('studentArray') || "[]")})
 
   };
 

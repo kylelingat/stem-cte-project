@@ -15,11 +15,11 @@ export const TableHeader = () => {
 };
 
 export const TableBody = props => {
-  if(localStorage.getItem("studentArray") === null){
+  if(props.students === null){
     return <tbody className="currStudents--body"></tbody>
   }
     var retrieveArray = localStorage.getItem("studentArray");
-    const rows =  JSON.parse(retrieveArray).map((row, index) => {
+    const rows =  props.students.map((row, index) => {
       return (
         <tr key={index}>
           <td>{row.firstName}</td>
