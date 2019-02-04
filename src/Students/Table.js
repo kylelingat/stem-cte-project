@@ -25,7 +25,7 @@ export const TableBody = props => {
           <td>{row.lastName}</td>
           <td>{row.grade}</td>
           <td>
-            <div className="currStudents--hiddenText" onClick={props.openModal}>View Profile</div>
+            <div className="currStudents--hiddenText" onClick={props.openModal.bind(this, index)}>View Profile</div>
           </td>
           <td className="currStudents--removeStudent">
             <div onClick={() => props.removeStudents(index)}>
