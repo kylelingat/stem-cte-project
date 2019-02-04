@@ -18,7 +18,6 @@ export const TableBody = props => {
   if(props.students === null){
     return <tbody className="currStudents--body"></tbody>
   }
-    var retrieveArray = localStorage.getItem("studentArray");
     const rows =  props.students.map((row, index) => {
       return (
         <tr key={index}>
@@ -26,7 +25,7 @@ export const TableBody = props => {
           <td>{row.lastName}</td>
           <td>{row.grade}</td>
           <td>
-            <div className="currStudents--hiddenText">View Profile</div>
+            <div className="currStudents--hiddenText" onClick={props.openModal}>View Profile</div>
           </td>
           <td className="currStudents--removeStudent">
             <div onClick={() => props.removeStudents(index)}>
