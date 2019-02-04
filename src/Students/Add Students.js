@@ -26,39 +26,47 @@ export default class AddStudents extends Component {
     this.setState(this.initialState);
   };
 
-  handleKeyPress = (event) => {
-    if(event.key == 'Enter'){
-      console.log('enter press here! ')
-      this.submitForm()
+  handleKeyPress = event => {
+    if (event.key == "Enter") {
+      console.log("enter press here! ");
+      this.submitForm();
     }
-  }
+  };
   render() {
     const { firstName, lastName, grade } = this.state;
     return (
-      <form tabIndex="0" className="studentsForm"  onKeyPress={this.handleKeyPress}>
-        <input
-          type="text"
-          placeholder="Name"
-          name="firstName"
-          value={firstName}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          name="lastName"
-          value={lastName}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Grade Level"
-          name="grade"
-          value={grade}
-          onChange={this.handleChange}
-        />
-        <input type="button" value="Submit" onClick={this.submitForm} />
-      </form>
+      <div className="studentsForm">
+      <div className="boxHeading">
+      <h1>Add Students</h1>
+      </div>
+        <form className="studentsFormWrap" tabIndex="0" onKeyPress={this.handleKeyPress}>
+          <input
+            type="text"
+            placeholder="Name"
+            name="firstName"
+            value={firstName}
+            autoComplete="off"
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            value={lastName}
+            autoComplete="off"
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Grade Level"
+            name="grade"
+            value={grade}
+            autoComplete="off"
+            onChange={this.handleChange}
+          />
+          <input type="button" value="Submit" onClick={this.submitForm} />
+        </form>
+      </div>
     );
   }
 }

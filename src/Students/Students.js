@@ -9,21 +9,14 @@ var testObj = {
   grade: "12"
 };
 
-localStorage.setItem("test", JSON.stringify(testObj));
+var testArray = [];
 
-var saveState;
-
-localStorage.setItem("test1", JSON.stringify(testObj));
-saveState = localStorage.getItem("test1");
+var retrieveArray = localStorage.getItem("test");
+console.log(retrieveArray);
 
 export default class Students extends Component {
   state = {
-    students: [
-      JSON.parse(saveState),
-      { firstName: "John", lastName: "Smith", grade: "12" },
-      { firstName: "John", lastName: "Smith", grade: "12" },
-      { firstName: "John", lastName: "Smith", grade: "12" }
-    ]
+    students: JSON.parse(retrieveArray)
   };
 
   removeStudents = index => {
@@ -37,16 +30,11 @@ export default class Students extends Component {
   };
 
   handleSubmit = students => {
-    var newStateObj = JSON.parse(saveState);
-    testObj.grade = 111;
-    console.log(testObj);
-    console.log(newStateObj);
-    this.setState({ students: [...this.state.students, students] }, () => {
-      console.log(...this.state.students);
-
-      // localStorage.setItem("test1", JSON.stringify(this.state));
-      // saveState = localStorage.getItem('test1');
-      // console.log(JSON.parse(saveState))
+    testArray.push(students);
+    window.localStorage.setItem("test", JSON.stringify(testArray));
+    retrieveArray = localStorage.getItem("test");
+    this.setState({ students: JSON.parse(retrieveArray) }, () => {
+      console.log(testArray);
     });
   };
 
@@ -58,7 +46,7 @@ export default class Students extends Component {
           saveState={this.saveState}
         />
         <div className="studentsTable">
-          <table >
+          <table>
             <TableHeader />
             <TableBody
               students={this.state.students}

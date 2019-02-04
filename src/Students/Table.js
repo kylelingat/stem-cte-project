@@ -22,9 +22,9 @@ export const TableBody = props => {
         <td>{row.firstName}</td>
         <td>{row.lastName}</td>
         <td>{row.grade}</td>
-        <td>View Profile</td>
+        <td><div className="currStudents--hiddenText">View Profile</div></td>
         <td className="currStudents--removeStudent">
-          <div onClick={() => props.removeStudents(index)} >&#10006;</div>
+          <div onClick={() => props.removeStudents(index)} ><div className="currStudents--hiddenText">&#10006;</div></div>
         </td>
       </tr>
     );
