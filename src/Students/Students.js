@@ -4,8 +4,12 @@ import Modal from "react-modal";
 import AddStudents from "./Add Students.js";
 import "./Students.css";
 import "./Modal Styles.css";
+var modalFirstName;
+var modalLastName;
+var modalGrade;
 
-const customStyles = {
+
+const studentModal = {
   content: {
     padding: "0px",
     display: "grid",
@@ -16,9 +20,16 @@ const customStyles = {
   }
 };
 
-var modalFirstName;
-var modalLastName;
-var modalGrade;
+const removeStudentModal = {
+    content: {
+      padding: "0px",
+      border: "none",
+      background: "red",
+      width: "250px",
+      height: "250px",
+      boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.25)"
+    }
+  };
 
 Modal.setAppElement("#root");
 export default class Students extends Component {
@@ -28,7 +39,8 @@ export default class Students extends Component {
     this.state = {
       students: JSON.parse(localStorage.getItem("studentArray") || "[]"),
       hasArray: localStorage.getItem("hasStudentArray"),
-      modalIsOpen: false
+      modalIsOpen: false,
+      removeDialogOpen: false
     };
   }
   openModal = index => {
@@ -43,7 +55,8 @@ export default class Students extends Component {
     this.setState({ modalIsOpen: false });
   };
 
-  removeStudents = index => {
+
+  removeStudents = (index) => {
     var retrieveStudArr = JSON.parse(localStorage.getItem("studentArray"));
     retrieveStudArr.splice(index, 1);
     localStorage.setItem("studentArray", JSON.stringify(retrieveStudArr));
@@ -87,17 +100,18 @@ export default class Students extends Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
+          style={studentModal}
           contentLabel="Example Modal"
         >
           <div className="modalHeader">
             <h1 className="modalHeaderText">
-              Summary for {modalLastName}, {modalFirstName}
+              Summary for {modalLastName}, {modalFirstName} 
             </h1>
             <p className="closeModalButton" onClick={this.closeModal}>&#10006;</p>
           </div>
           <div className="modalContentContainer"></div>
         </Modal>
+
       </div>
     );
   }
