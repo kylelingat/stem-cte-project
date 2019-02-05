@@ -7,7 +7,7 @@ import "./Modal Styles.css";
 var modalFirstName;
 var modalLastName;
 var modalGrade;
-
+var indexToRemove;
 
 const studentModal = {
   content: {
@@ -21,15 +21,15 @@ const studentModal = {
 };
 
 const removeStudentModal = {
-    content: {
-      padding: "0px",
-      border: "none",
-      background: "red",
-      width: "250px",
-      height: "250px",
-      boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.25)"
-    }
-  };
+  content: {
+    padding: "0px",
+    border: "none",
+    background: "red",
+    width: "250px",
+    height: "250px",
+    boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.25)",
+  }
+};
 
 Modal.setAppElement("#root");
 export default class Students extends Component {
@@ -55,8 +55,7 @@ export default class Students extends Component {
     this.setState({ modalIsOpen: false });
   };
 
-
-  removeStudents = (index) => {
+  removeStudents = index => {
     var retrieveStudArr = JSON.parse(localStorage.getItem("studentArray"));
     retrieveStudArr.splice(index, 1);
     localStorage.setItem("studentArray", JSON.stringify(retrieveStudArr));
@@ -64,7 +63,22 @@ export default class Students extends Component {
     this.setState({
       students: students.filter((character, i) => {
         return i !== index;
-      })
+      }),
+      removeDialogOpen: false
+    });
+  };
+
+  removeConfirmBox = index => {
+    this.setState({
+      removeDialogOpen: true
+    });
+    indexToRemove = index;
+    console.log(indexToRemove);
+  };
+
+  cancelRemoveHandler = () => {
+    this.setState({
+      removeDialogOpen: false
     });
   };
 
@@ -90,7 +104,7 @@ export default class Students extends Component {
             <TableHeader />
             <TableBody
               students={this.state.students}
-              removeStudents={this.removeStudents}
+              removeStudents={this.removeConfirmBox}
               openModal={this.openModal}
             />
           </table>
@@ -105,13 +119,29 @@ export default class Students extends Component {
         >
           <div className="modalHeader">
             <h1 className="modalHeaderText">
-              Summary for {modalLastName}, {modalFirstName} 
+              Summary for {modalLastName}, {modalFirstName}
             </h1>
-            <p className="closeModalButton" onClick={this.closeModal}>&#10006;</p>
+            <p className="closeModalButton" onClick={this.closeModal}>
+              &#10006;
+            </p>
           </div>
-          <div className="modalContentContainer"></div>
+          <div className="modalContentContainer" />
         </Modal>
 
+        <Modal
+          isOpen={this.state.removeDialogOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={removeStudentModal}
+          contentLabel="Example Modal"
+        >
+          <div className="modalHeader">
+            <div onClick={this.removeStudents.bind(this, indexToRemove)}>
+              remove
+            </div>
+            <div onClick={this.cancelRemoveHandler}>cancel</div>
+          </div>
+        </Modal>
       </div>
     );
   }
