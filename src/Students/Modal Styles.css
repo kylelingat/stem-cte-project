@@ -39,3 +39,79 @@
     background-color: var(--contentBg-color);
 }
 
+.removeStudentModal {
+    display: grid;
+    background-color: var(--sideBar-color);
+    height: 100%; 
+    border-radius: 10px;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.rsm-centerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.rsm-centerContainer svg {
+    color: #f8bb86;
+    transform: scale(3)
+}
+
+.rsm-exclamationIcon {
+    display: inline-flex;
+    border: 5px solid #f8bb86;
+    border-radius: 50%;
+    padding: 40px;
+}
+
+.rsm-confirmText {
+    text-align: center;
+    color: #eff6f7;
+    font-family: 'Poppins'
+}
+
+.rsm-confirmText h1 {
+    font-size: 1.6em;
+    margin-top: 30px;
+}
+
+.rsm-confirmText h2 {
+    font-size: 1.2em;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.rsm-buttonBar {
+    text-align: right;
+    margin-top: 45px;
+    margin-right: 20px;
+}
+
+.rsm-buttons {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 12px 20px;
+    color: white;
+    font-family: 'Poppins';
+    transition: all 0.3s;
+}
+
+.rsm-cancel {
+    background-color: rgba(232,232,232, 0.3);
+    margin-right: 20px;
+}
+
+.rsm-cancel:hover {
+    filter: brightness(0.8)
+}
+
+.rsm-remove {
+    background-color: #ff6258;
+}
+
+.rsm-remove:hover {
+    background-color: #ff3e32;
+}

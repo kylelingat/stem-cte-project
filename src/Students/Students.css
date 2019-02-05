@@ -38,17 +38,18 @@
 }
 
 .studentsForm input[type="button"] {
-    width: 45%;
+    width: 30%;
     border-radius: 5px;
     padding: 6px 10px;
     font-family: 'Poppins';
     cursor: pointer;
     color: white;
     background-color: #019875;
+    float: right;
 }
 
 .studentsForm input[type="button"]:hover {
-    filter: brightness(0.9)
+    filter: brightness(0.85)
 }
 
 .studentsForm .boxHeading {
@@ -135,6 +136,7 @@ tbody:after {
 }
 
 .currStudents--body tr:hover {
+    transition: all 0.3s;
     background-color: #2c3453;
 }
 
@@ -176,11 +178,6 @@ table {
     color: white;
 }
 
-thead th {}
-
-tfoot th {}
-
-td {}
 
 th,
 td {
