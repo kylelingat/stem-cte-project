@@ -1,10 +1,10 @@
 import React from "react";
 
-export const TableHeader = () => {
+export const TableHeader = props => {
   return (
     <thead className="currStudents--head">
       <tr className="currStudents--tableHeading">
-        <th>First Name</th>
+        <th onClick={props.sort}>First Name</th>
         <th>Last Name</th>
         <th>Grade</th>
         <th />
