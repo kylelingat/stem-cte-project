@@ -1,0 +1,5 @@
+.horNavBar {
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    background-color: var(--sideBar-color);
+}

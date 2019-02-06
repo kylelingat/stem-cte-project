@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Main Wrap.css";
 import NavBar from "../Nav Bar/Nav Bar.js";
+import HorizontalNav from '../Nav Bar/Horizontal Nav.js';
 import Main from "../Main/Main.js";
 
 
@@ -19,6 +20,10 @@ export default class MainWrap extends Component {
   render() {
     return (
       <div className="mainWrap">
+        <div className="navLogoContainer">
+        <div className="navLogo"><h1>Behavior Tracker</h1></div>
+        </div>
+        <HorizontalNav></HorizontalNav>
         <NavBar pageSwitchHandler={this.pageSwitchHandler} state={this.state} />
         <Main currPage={this.state.currPage} localState={this.localState} />
       </div>

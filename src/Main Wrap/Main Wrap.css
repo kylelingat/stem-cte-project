@@ -2,5 +2,21 @@
     height: 100%;
     width: 100%;
     display: grid;
+    grid-template-rows: 10% 90%;
     grid-template-columns: 15% 85%;
+  }
+
+  .navLogoContainer {
+    background-color: var(--sideBar-color);
+    display: grid;
+  }
+
+  .navLogo {
+    margin: auto
+  }
+
+  .navLogo h1 {
+    color: white;
+    margin: 0;
+    font-size: 1em;
   }
