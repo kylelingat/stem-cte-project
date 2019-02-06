@@ -52,6 +52,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    margin-top: 25px;
 }
 
 .rsm-centerContainer svg {

@@ -1,3 +1,6 @@
+
+
+  
 .navBar {
     background-color: var(--sideBar-color);
     width: 100%;
@@ -7,14 +10,46 @@
 }
 
 .navBarItem {
-    color: white;
+    color: var(--sideBarText-color);
     padding: 12px 10px;
-    text-align: center;
     cursor: pointer;
     font-family: 'Poppins';
+    transition: all 0.3s;
+    padding-bottom: 15px;
+    border-right: 5px solid var(--sideBar-color);
+}
+
+.navActive {
+    border-right: 5px solid var(--sideBarHoverAccent-color);
+}
+
+.navBarItem:hover {
+    color: var(--sideBarTextHover-color);
 }
 
 .navbarIcon {
     margin-right: 1.25em;
+}
+
+.menu-icon {
+    margin-right: 16px;
+    width: 16px;
+    line-height: 1;
+    font-size: 14px;
+    color: #979797;
+}
+
+.menu-icon svg {
+    font-size: 14px;
+    width: 20px !important;
+}
+
+.menu-title {
+    color: inherit;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+
 }
 

@@ -2,6 +2,10 @@
 
 :root {
   --sideBar-color: #252C46;
+  --sideBarText-color: #BEBEBE;
+  --sideBarTextHover-color: white;
+  --sideBarHoverAccent-color: #39446c;
+  
   --contentBg-color: #1B2137;
   --box-color: #1e2439;
   --inputFont-color: #eff6f7

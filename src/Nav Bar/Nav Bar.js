@@ -9,26 +9,51 @@ import "./Nav Bar.css";
 
 export default class NavBar extends Component {
   //pageSwitchHandler is located in Main Wrap.js (parent element)
+
+
   render() {
+    let homeActive = ["navBarItem"]
+    let studentActive = ["navBarItem"]
+    let behaviorActive = ["navBarItem"]
+    if(this.props.state.currPage === "home"){
+      homeActive = ["navBarItem", "navActive"].join(' ');
+    } else if (this.props.state.currPage === "students"){
+      studentActive = ["navBarItem", "navActive"].join(' ');
+    } else if (this.props.state.currPage === "behaviors"){
+      behaviorActive = ["navBarItem", "navActive"].join(' ');
+    }
     return (
       <ul className="navBar">
         <li
-          className="navBarItem"
+          className={homeActive}
           onClick={this.props.pageSwitchHandler.bind(this, "home")}
         >
-        <a><i></i>Home</a>
+        <a className="nav-link">
+                <i className="menu-icon">
+                <FontAwesomeIcon icon={faHome}></FontAwesomeIcon></i>
+                <span className="menu-title">Home</span>
+                <i className="menu-arrow"></i>
+              </a>
         </li>
         <li
-          className="navBarItem"
+          className={studentActive}
           onClick={this.props.pageSwitchHandler.bind(this, "students")}
         >
-        <a><i></i>Students</a>
+        <a className="nav-link">
+                <i className="menu-icon"><FontAwesomeIcon icon={faUserGraduate}></FontAwesomeIcon></i>
+                <span className="menu-title">Students</span>
+                <i className="menu-arrow"></i>
+              </a>
         </li>
         <li
-          className="navBarItem"
+          className={behaviorActive}
           onClick={this.props.pageSwitchHandler.bind(this, "behaviors")}
         >
-        <a><i></i>Behaviors</a>
+                <a className="nav-link">
+                <i className="menu-icon"><FontAwesomeIcon icon={faBrain}></FontAwesomeIcon></i>
+                <span className="menu-title">Behaviors</span>
+                <i className="menu-arrow"></i>
+              </a>
         </li>
       </ul>
     );

@@ -9,7 +9,7 @@ export default class MainWrap extends Component {
     currPage: localStorage.getItem("currPage")
   };
 
-  pageSwitchHandler = page => {
+  pageSwitchHandler = (page) => {
     localStorage.setItem("currPage", page);
     this.setState({
       currPage: localStorage.getItem("currPage")
@@ -19,7 +19,7 @@ export default class MainWrap extends Component {
   render() {
     return (
       <div className="mainWrap">
-        <NavBar pageSwitchHandler={this.pageSwitchHandler} />
+        <NavBar pageSwitchHandler={this.pageSwitchHandler} state={this.state} />
         <Main currPage={this.state.currPage} localState={this.localState} />
       </div>
     );
