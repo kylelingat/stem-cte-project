@@ -1,0 +1,8 @@
+.dbTestContainer {
+    background-color: var(--contentBg-color);
+}
+
+.dbTable {
+    width: 88%;
+    background-color: white;
+}

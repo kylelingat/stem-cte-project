@@ -7,6 +7,7 @@ import "./Modal Styles.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
 library.add(faExclamation);
 var modalFirstName;
 var modalLastName;
@@ -45,6 +46,7 @@ Modal.setAppElement("#root");
 export default class Students extends Component {
   constructor(props) {
     super(props);
+    console.log(JSON.parse(localStorage.getItem("studentArray") || "[]"))
     this.openViewProfileModal = this.openViewProfileModal.bind(this);
     this.state = {
       students: JSON.parse(localStorage.getItem("studentArray") || "[]"),
