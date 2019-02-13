@@ -45,13 +45,16 @@ export default class DbTest extends Component {
 
     return (
       <div className="dbTestContainer">
-        <ReactTable
+      <div>Add</div>
+      <div className="reactTableContainer">
+      <ReactTable
           data={this.state.students}
           columns={columns}
           defaultPageSize={5}
           showPaginationBottom={false}
           className="dbTable"
-        />
+        /></div>
+       
       </div>
     );
   }

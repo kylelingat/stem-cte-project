@@ -1,8 +1,49 @@
 .dbTestContainer {
     background-color: var(--contentBg-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .dbTable {
-    width: 88%;
     background-color: white;
+}
+
+.reactTableContainer {
+    padding: 10px;
+    
+}
+.ReactTable {
+    border: 0px solid white !important;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--box-color);
+}
+
+
+.rt-thead {
+    background-color: var(--sideBar-color);
+}
+
+.rt-resizable-header-content {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.7;
+}
+
+.rt-tbody {
+    background-color: var(--box-color);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.rt-td {
+    font-family: 'Poppins';
+}
+
+.rt-tr-group {
+    border-bottom: 0px solid white !important;
+}
+
+.rt-td {
+    border-right: 0px solid white !important;
+    color: white;
 }
