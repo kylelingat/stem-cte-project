@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class AddStudents extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class AddStudents extends Component {
     this.state = this.initialState;
   }
 
+
   handleChange = event => {
     const { name, value } = event.target;
 
@@ -22,9 +24,20 @@ export default class AddStudents extends Component {
   };
 
   submitForm = () => {
-    this.props.handleSubmit(this.state);
+    axios.post('https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/post', {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      grade_level: this.state.grade
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     this.setState(this.initialState);
   };
+
 
   handleKeyPress = event => {
     if (event.key == "Enter") {
@@ -35,15 +48,14 @@ export default class AddStudents extends Component {
     const { firstName, lastName, grade } = this.state;
     return (
       <div className="studentsForm">
-      <div className="boxHeading">
-      <h1>Add Students</h1>
-      </div>
-        <form className="studentsFormWrap" tabIndex="0" onKeyPress={this.handleKeyPress}>
+        <div className="boxHeading">
+          <h1>Add Students</h1>
+        </div>
+        <form className="studentsFormWrap" tabIndex="0">
           <input
             type="text"
             placeholder="Name"
             name="firstName"
-            value={firstName}
             autoComplete="off"
             onChange={this.handleChange}
           />
@@ -51,7 +63,6 @@ export default class AddStudents extends Component {
             type="text"
             placeholder="Last Name"
             name="lastName"
-            value={lastName}
             autoComplete="off"
             onChange={this.handleChange}
           />
@@ -59,11 +70,10 @@ export default class AddStudents extends Component {
             type="text"
             placeholder="Grade Level"
             name="grade"
-            value={grade}
             autoComplete="off"
             onChange={this.handleChange}
           />
-          <input type="button" value="Submit" onClick={this.submitForm} />
+          <input type="button" value="Submit" onClick={this.submitForm}/>
         </form>
       </div>
     );

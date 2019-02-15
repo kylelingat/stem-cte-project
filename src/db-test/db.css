@@ -1,49 +1,78 @@
 .dbTestContainer {
-    background-color: var(--contentBg-color);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  background-color: var(--contentBg-color);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+  padding: 20px;
 }
 
 .dbTable {
-    background-color: white;
+  background-color: white;
 }
 
 .reactTableContainer {
-    padding: 10px;
-    
 }
 .ReactTable {
-    border: 0px solid white !important;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: var(--box-color);
+  border: 0px solid white !important;
+  border-radius: 10px;
+  background-color: var(--box-color);
+  width: 100%;
+  margin: auto;
 }
-
 
 .rt-thead {
-    background-color: var(--sideBar-color);
+  background-color: var(--sideBar-color);
+  height: 50px;
 }
 
-.rt-resizable-header-content {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    opacity: 0.7;
+.rt-th {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  opacity: 0.7;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-right: 0px solid !important;
+  transition: all 0.3s !important;
+  padding: 10px !important;
+}
+
+.rt-th:nth-child(3),
+.rt-td:nth-child(3) {
+  text-align: right;
+}
+
+.ReactTable .rt-thead .rt-th.-sort-asc,
+.ReactTable .rt-thead .rt-td.-sort-asc {
+  border-top: 2px solid var(--sideBarHoverAccent-color);
+  box-shadow: none !important;
+}
+
+.ReactTable .rt-thead .rt-th.-sort-desc,
+.ReactTable .rt-thead .rt-td.-sort-desc {
+  border-bottom: 2px solid var(--sideBarHoverAccent-color);
+  box-shadow: none !important;
 }
 
 .rt-tbody {
-    background-color: var(--box-color);
-    border-radius: 0px 0px 10px 10px;
+  background-color: var(--box-color);
+  border-radius: 0px 0px 10px 10px;
 }
 
 .rt-td {
-    font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .rt-tr-group {
-    border-bottom: 0px solid white !important;
+  border-bottom: 0px solid white !important;
 }
 
 .rt-td {
-    border-right: 0px solid white !important;
-    color: white;
+  border-right: 0px solid white !important;
+  color: white;
+}
+
+
+.addStudentsContainer {
+    width: 100%;
 }

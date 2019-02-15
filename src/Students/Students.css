@@ -1,15 +1,13 @@
 .studentsContainer {
     background-color: var(--contentBg-color);
     display: grid;
-    grid-template-columns: 30% 70%
+    grid-template-columns: 30% 70%;
 }
 
 .studentsForm {
     display: grid;
-    width: 80%;
+    width: 100%;
     margin: auto;
-    margin-top: 25px;
-    padding: 10px;
     border-radius: 10px;
     background-color: var(--box-color);
 }
@@ -54,7 +52,7 @@
 
 .studentsForm .boxHeading {
     background-color: var(--sideBar-color);
-    border-radius: 10px;
+    height: 50px;
 }
 
 .studentsForm .boxHeading h1 {
