@@ -29,8 +29,9 @@ export default class AddStudents extends Component {
       last_name: this.state.lastName,
       grade_level: this.state.grade
     })
-    .then(function (response) {
+    .then( (response)=> {
       console.log(response);
+      this.props.retrieveStudents()
     })
     .catch(function (error) {
       console.log(error);
@@ -51,12 +52,13 @@ export default class AddStudents extends Component {
         <div className="boxHeading">
           <h1>Add Students</h1>
         </div>
-        <form className="studentsFormWrap" tabIndex="0">
+        <form className="studentsFormWrap" tabIndex="0" onKeyPress={this.handleKeyPress}>
           <input
             type="text"
             placeholder="Name"
             name="firstName"
             autoComplete="off"
+            value={this.state.firstName}
             onChange={this.handleChange}
           />
           <input
@@ -64,6 +66,7 @@ export default class AddStudents extends Component {
             placeholder="Last Name"
             name="lastName"
             autoComplete="off"
+            value={this.state.lastName}
             onChange={this.handleChange}
           />
           <input
@@ -71,6 +74,7 @@ export default class AddStudents extends Component {
             placeholder="Grade Level"
             name="grade"
             autoComplete="off"
+            value={this.state.grade}
             onChange={this.handleChange}
           />
           <input type="button" value="Submit" onClick={this.submitForm}/>

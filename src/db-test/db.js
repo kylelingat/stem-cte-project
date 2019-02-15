@@ -40,6 +40,10 @@ export default class DbTest extends Component {
   };
 
   componentDidMount = () => {
+    this.retrieveStudents()
+  };
+
+  retrieveStudents = () => {
     axios
       .get(`https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/get`)
       .then(res => {
@@ -48,7 +52,7 @@ export default class DbTest extends Component {
           students: students
         });
       });
-  };
+  }
 
   onRowClick = (state, rowInfo, column, instance) => {
     return {
@@ -86,7 +90,7 @@ export default class DbTest extends Component {
     return (
       <div className="dbTestContainer">
         <div className="addStudentsContainer">
-        <AddStudents />
+        <AddStudents retrieveStudents={this.retrieveStudents} />
         </div>
         <div className="reactTableContainer">
           <ReactTable
