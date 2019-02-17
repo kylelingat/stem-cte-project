@@ -8,7 +8,9 @@
 
   --contentBg-color: #1B2137;
   --box-color: #1e2439;
-  --inputFont-color: #eff6f7
+  --inputFont-color: #eff6f7;
+
+  --tableRowHov-color: #2c3453;
 }
 
 [tabindex] {

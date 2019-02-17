@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./db.css";
 import axios from "axios";
 import Modal from "react-modal";
-import ReactTable from "react-table";
-import AddStudents from "../Students/Add Students.js"
+import ReactTable from "react-table"; 
+import AddStudents from "../Students/Add Students.js";
 import "react-table/react-table.css";
 var students;
 
@@ -11,6 +11,7 @@ const studentModal = {
   content: {
     padding: "0px",
     display: "grid",
+    height: "400px",
     gridTemplateRows: "20% 80%",
     border: "none",
     background: "none",
@@ -40,7 +41,7 @@ export default class DbTest extends Component {
   };
 
   componentDidMount = () => {
-    this.retrieveStudents()
+    this.retrieveStudents();
   };
 
   retrieveStudents = () => {
@@ -52,7 +53,7 @@ export default class DbTest extends Component {
           students: students
         });
       });
-  }
+  };
 
   onRowClick = (state, rowInfo, column, instance) => {
     return {
@@ -89,9 +90,6 @@ export default class DbTest extends Component {
 
     return (
       <div className="dbTestContainer">
-        <div className="addStudentsContainer">
-        <AddStudents retrieveStudents={this.retrieveStudents} />
-        </div>
         <div className="reactTableContainer">
           <ReactTable
             data={this.state.students}
@@ -102,6 +100,9 @@ export default class DbTest extends Component {
             resizable={false}
             getTrProps={this.onRowClick}
           />
+        </div>
+        <div className="addStudentsContainer">
+          <AddStudents retrieveStudents={this.retrieveStudents} />
         </div>
         <Modal
           contentLabel="Example Modal"
