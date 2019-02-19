@@ -24,14 +24,14 @@ console.log('table', table)
 
 module.exports.deleteStudent = (event, context, callback) => {
 
-  const deleteStudentByID = `DELETE FROM ${table} WHERE id=$1`
+  const deleteStudentByID = `DELETE FROM ${table} WHERE student_id=$1`
 
-  let {id}= event.body
+  let {student_id}= event.body
 
   pool.connect()
     .then(client => {
       client.release();
-      return client.query(deleteStudentByID, [id]);
+      return client.query(deleteStudentByID, [student_id]);
     })
     .then(data => {
       const response = {

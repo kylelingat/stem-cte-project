@@ -80,6 +80,15 @@ functions:
           cors: true
           integration: lambda 
 
+  deleteStudent:
+    handler: routes/delete.deleteStudent
+    events:
+      - http:
+          path: delete
+          method: delete
+          cors: true
+          integration: lambda 
+
 
 
 #    The following are a few example events you can configure

@@ -55,6 +55,22 @@ export default class DbTest extends Component {
       });
   };
 
+  deleteStudent = () => {
+    axios.delete('https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/delete', {
+      data: {
+        student_id: this.state.modalStudent.studId
+      }
+    })
+    .then(  (response) => {
+      console.log(response);
+      this.setState({ modalIsOpen: false });
+      this.retrieveStudents()
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   onRowClick = (state, rowInfo, column, instance) => {
     return {
       onClick: e => {
@@ -120,7 +136,7 @@ export default class DbTest extends Component {
               &#10006;
             </p>
           </div>
-          <div className="modalContentContainer" />
+          <div className="modalContentContainer"><div onClick={this.deleteStudent}>delete</div></div>
         </Modal>
       </div>
     );
