@@ -58,16 +58,6 @@ export default class NavBar extends Component {
                 <i className="menu-arrow"></i>
               </a>
         </li>
-        <li
-          className={dbTestActive}
-          onClick={this.props.pageSwitchHandler.bind(this, "db-test")}
-        >
-                <a className="nav-link">
-                <i className="menu-icon"><FontAwesomeIcon icon={faBrain}></FontAwesomeIcon></i>
-                <span className="menu-title">Database Testing</span>
-                <i className="menu-arrow"></i>
-              </a>
-        </li>
       </ul>
     );
   }

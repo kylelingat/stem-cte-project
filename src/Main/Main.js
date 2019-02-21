@@ -3,7 +3,6 @@ import "./Main.css";
 import Home from '../Home/Home.js';
 import Students from '../Students/Students.js';
 import Behaviors from '../Behaviors/Behaviors.js';
-import DbTest from '../db-test/db.js';
 
 
 export default class Main extends Component {
@@ -15,8 +14,6 @@ export default class Main extends Component {
         return <Students />
       } else if (this.props.currPage === 'behaviors'){
         return <Behaviors />
-      } else if (this.props.currPage === 'db-test'){
-        return <DbTest />
       }
     return null
     

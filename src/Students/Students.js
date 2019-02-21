@@ -1,24 +1,21 @@
 import React, { Component } from "react";
-import { TableHeader, TableBody } from "./Table.js";
+import RemoveStudentModal from "./Remove.js";
+import StudentModal from "./Student Modal.js";
+import "./db.css";
+import axios from "axios";
 import Modal from "react-modal";
-import AddStudents from "./Add Students.js";
+import ReactTable from "react-table";
+import AddStudents from "../Students/Add Students.js";
+import "react-table/react-table.css";
 import "./Students.css";
 import "./Modal Styles.css";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamation } from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios';
-library.add(faExclamation);
-var modalFirstName;
-var modalLastName;
-var modalGrade;
-var indexToRemove;
+
+var students;
 
 const studentModal = {
   content: {
     padding: "0px",
-    display: "grid",
-    gridTemplateRows: "20% 80%",
+    height: "400px",
     border: "none",
     background: "none",
     boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.25)"
@@ -43,147 +40,169 @@ const removeStudentModal = {
 };
 
 Modal.setAppElement("#root");
-export default class Students extends Component {
+export default class DbTest extends Component {
   constructor(props) {
     super(props);
-    console.log(JSON.parse(localStorage.getItem("studentArray") || "[]"))
-    this.openViewProfileModal = this.openViewProfileModal.bind(this);
+
     this.state = {
-      students: JSON.parse(localStorage.getItem("studentArray") || "[]"),
-      hasArray: localStorage.getItem("hasStudentArray"),
+      students: students,
       modalIsOpen: false,
-      removeDialogOpen: false
+      modalStudent: {},
+      modalLoading: false,
+      isRemoveModalOpen: false
     };
   }
 
-  openViewProfileModal = index => {
+  openStudProfHandler = () => {
     this.setState({ modalIsOpen: true });
-    console.log(this.state.students[index]);
-    modalFirstName = this.state.students[index].firstName;
-    modalLastName = this.state.students[index].lastName;
-    modalGrade = this.state.students[index].grade;
   };
 
-  closeViewProifleModal = () => {
+  closeStudProfHandler = () => {
     this.setState({ modalIsOpen: false });
+    this.setState({ modalStudent: {} });
   };
 
-  openRemoveStudModal = index => {
+  componentDidMount = () => {
+    this.retrieveStudents();
+  };
+
+  retrieveStudents = () => {
+    axios
+      .get(`https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/get`)
+      .then(res => {
+        students = res.data.message.rows;
+        this.setState({
+          students: students
+        });
+      });
+  };
+
+  deleteStudent = () => {
+    this.modalLoading()
+    axios
+      .delete(
+        "https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/delete",
+        {
+          data: {
+            student_id: this.state.modalStudent.studId
+          }
+        }
+      )
+      .then(response => {
+        console.log(response);
+        this.setState({ isRemoveModalOpen: false });
+        this.modalLoading()
+        this.retrieveStudents();
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  openRemoveHandler = () => {
     this.setState({
-      removeDialogOpen: true
+      modalIsOpen: false,
+      isRemoveModalOpen: true
     });
-    indexToRemove = index;
-    modalFirstName = this.state.students[index].firstName;
-    modalLastName = this.state.students[index].lastName;
-    modalGrade = this.state.students[index].grade;
   };
 
   cancelRemoveHandler = () => {
     this.setState({
-      removeDialogOpen: false
+      isRemoveModalOpen: false
     });
+    console.log('t')
   };
 
-  removeStudents = index => {
-    var retrieveStudArr = JSON.parse(localStorage.getItem("studentArray"));
-    retrieveStudArr.splice(index, 1);
-    localStorage.setItem("studentArray", JSON.stringify(retrieveStudArr));
-    const { students } = this.state;
-    this.setState({
-      students: students.filter((character, i) => {
-        return i !== index;
-      }),
-      removeDialogOpen: false
-    });
+  onRowClick = (state, rowInfo, column, instance) => {
+    return {
+      onClick: e => {
+        this.setState({ modalIsOpen: true });
+        this.setState({
+          modalStudent: {
+            firstName: rowInfo.original.first_name,
+            lastName: rowInfo.original.last_name,
+            gradeLevel: rowInfo.original.grade_level,
+            studId: rowInfo.original.student_id
+          }
+        });
+      }
+    };
   };
 
-  handleSubmit = students => {
-    var studentArray = JSON.parse(localStorage.getItem("studentArray") || "[]");
-
-    studentArray.push(students);
-    localStorage.setItem("studentArray", JSON.stringify(studentArray));
-    this.setState({
-      students: JSON.parse(localStorage.getItem("studentArray") || "[]")
-    });
+  modalLoading = () => {
+    if (this.state.modalLoading === false) {
+      this.setState({
+        modalLoading: true
+      });
+    } else if (this.state.modalLoading === true) {
+      this.setState({
+        modalLoading: false
+      });
+    }
   };
-
-
 
   render() {
-    return (
-      <div className="studentsContainer">
-        <AddStudents
-          handleSubmit={this.handleSubmit}
-          saveState={this.saveState}
-        />
-        <div className="studentsTableContainer">
-          <table id="studentsTable">
-            <TableHeader 
-              sort={this.sortTable}
-            />
-            <TableBody
-              students={this.state.students}
-              removeStudents={this.openRemoveStudModal}
-              openModal={this.openViewProfileModal}
-            />
-          </table>
-        </div>
+    const columns = [
+      {
+        Header: "First Name",
+        accessor: "first_name"
+      },
+      {
+        Header: "Last Name",
+        accessor: "last_name"
+      },
+      {
+        Header: "Grade",
+        accessor: "grade_level"
+      }
+    ];
 
+    return (
+      <div className="dbTestContainer">
+        <div className="reactTableContainer">
+          <ReactTable
+            data={this.state.students}
+            columns={columns}
+            defaultPageSize={10}
+            showPaginationBottom={false}
+            className="dbTable"
+            resizable={false}
+            getTrProps={this.onRowClick}
+            loading={this.state.modalLoading}
+          />
+        </div>
+        <div className="addStudentsContainer">
+          <AddStudents
+            retrieveStudents={this.retrieveStudents}
+            modalLoading={this.modalLoading}
+          />
+        </div>
         <Modal
+          contentLabel="Example Modal"
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeViewProifleModal}
+          onRequestClose={this.closeStudProfHandler}
           style={studentModal}
-          contentLabel="Example Modal"
         >
-          <div className="modalHeader">
-            <h1 className="modalHeaderText">
-              Summary for {modalLastName}, {modalFirstName}
-            </h1>
-            <p
-              className="closeModalButton"
-              onClick={this.closeViewProifleModal}
-            >
-              &#10006;
-            </p>
-          </div>
-          <div className="modalContentContainer" />
+        <StudentModal
+        modalStudent={this.state.modalStudent}
+        openRemoveHandler={this.openRemoveHandler}
+        closeStudProfHandler={this.closeStudProfHandler}
+        ></StudentModal>
         </Modal>
 
         <Modal
-          isOpen={this.state.removeDialogOpen}
+          isOpen={this.state.isRemoveModalOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.cancelRemoveHandler}
           style={removeStudentModal}
-          contentLabel="Example Modal"
+          modalStudent={this.state.modalStudent}
         >
-          <div className="removeStudentModal">
-            <div className="rsm-centerContainer">
-              <div className="rsm-exclamationIcon">
-                <FontAwesomeIcon icon={faExclamation} />
-              </div>
-            </div>
-            <div className="rsm-confirmText">
-              <h1>Are you sure?</h1>
-              <h2>
-                Remove {modalLastName}, {modalFirstName}
-              </h2>
-            </div>
-            <div className="rsm-buttonBar">
-              <div
-                onClick={this.cancelRemoveHandler}
-                className="rsm-buttons rsm-cancel"
-              >
-                Cancel
-              </div>
-              <div
-                onClick={this.removeStudents.bind(this, indexToRemove)}
-                className="rsm-buttons rsm-remove"
-              >
-                Remove
-              </div>
-            </div>
-          </div>
+          <RemoveStudentModal 
+          deleteStudent={this.deleteStudent}
+          onRequestClose={this.cancelRemoveHandler}
+          modalStudent={this.state.modalStudent}
+          />
         </Modal>
       </div>
     );

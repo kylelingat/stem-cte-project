@@ -24,6 +24,7 @@ export default class AddStudents extends Component {
   };
 
   submitForm = () => {
+    this.props.modalLoading()
     axios.post('https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/post', {
       first_name: this.state.firstName,
       last_name: this.state.lastName,
@@ -31,6 +32,7 @@ export default class AddStudents extends Component {
     })
     .then( (response)=> {
       console.log(response);
+      this.props.modalLoading()
       this.props.retrieveStudents()
     })
     .catch(function (error) {

@@ -2,6 +2,12 @@
     background-color: RGBA(0,0,0,0.5) !important;
 }
 
+.studentModalContent {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    height: 100%;
+}
+
 .modalHeader {
     display: grid;
     grid-template-columns: 90% 10%;
@@ -17,6 +23,46 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+}
+
+.modalContentContainer {
+    background-color: var(--contentBg-color);
+    display: grid;
+    grid-template-columns: 30%;
+    padding: 10px;
+}
+
+.studentModalBox {
+    background-color: var(--box-color);
+    padding: 10px;
+    border-radius: 5px;
+    height: 200px;
+}
+
+.studentModalBox h1 {
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1em;
+    font-weight: lighter;
+    opacity: 0.8;
+}
+
+.basicInfoTable {
+    width: 75%;
+}
+.basicInfoTable tr {
+    width: 10px;
+}
+
+.basicInfoTable td{
+    padding: 0px;
+    font-family: 'Poppins';
+    font-size: 0.8em; 
+}
+
+.basicInfoHeaders {
+    opacity: 0.7;
+    font-weight: bold;
 }
 
 .closeModalButton {
@@ -35,9 +81,6 @@
     border-radius: 5px;
 }
 
-.modalContentContainer {
-    background-color: var(--contentBg-color);
-}
 
 .removeStudentModal {
     display: grid;
