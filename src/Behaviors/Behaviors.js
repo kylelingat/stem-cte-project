@@ -4,8 +4,29 @@ import axios from "axios";
 import Modal from "react-modal";
 import "./Behaviors.css";
 Modal.setAppElement("#root");
-
 var students = [];
+
+const studentStyleBg = (base, state) => {
+  let changes = {
+    backgroundColor: 'var(--inputBg-color)'
+  };
+  return Object.assign(base, changes);
+};
+
+const controlStyles = (base, state) => {
+    let changes = {
+      border: '0px solid transparent',
+      ...base,
+      border: state.isFocused ? 0 : 0,
+      // This line disable the blue border
+      boxShadow: state.isFocused ? 0 : 0,
+      '&:hover': {
+         border: state.isFocused ? 0 : 0
+      }
+    };
+    return Object.assign(base, changes);
+  };
+
 export default class Behaviors extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +71,16 @@ export default class Behaviors extends Component {
               <h1>Input Behaviors</h1>
             </div>
             <form className="studentsFormWrap" tabIndex="0">
-              <Select options={studentOptions} />
+              <Select
+                options={studentOptions}
+                placeholder={"Select Student"}
+                styles={
+                    { valueContainer: studentStyleBg,
+                      indicatorsContainer: studentStyleBg,
+                      control: controlStyles }
+                    
+                }
+              />
               <input type="button" value="Submit" onClick={this.submitForm} />
             </form>
           </div>

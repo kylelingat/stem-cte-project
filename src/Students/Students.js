@@ -10,6 +10,7 @@ import "react-table/react-table.css";
 import "./Students.css";
 import "./Modal Styles.css";
 
+
 var students;
 
 const studentModal = {
