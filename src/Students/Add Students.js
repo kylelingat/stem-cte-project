@@ -14,7 +14,6 @@ export default class AddStudents extends Component {
     this.state = this.initialState;
   }
 
-
   handleChange = event => {
     const { name, value } = event.target;
 
@@ -24,23 +23,23 @@ export default class AddStudents extends Component {
   };
 
   submitForm = () => {
-    this.props.modalLoading()
-    axios.post('https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/post', {
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      grade_level: this.state.grade
-    })
-    .then( (response)=> {
-      console.log(response);
-      this.props.modalLoading()
-      this.props.retrieveStudents()
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    this.props.modalLoading();
+    axios
+      .post("https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/post", {
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        grade_level: this.state.grade
+      })
+      .then(response => {
+        console.log(response);
+        this.props.modalLoading();
+        this.props.retrieveStudents();
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     this.setState(this.initialState);
   };
-
 
   handleKeyPress = event => {
     if (event.key == "Enter") {
@@ -54,7 +53,11 @@ export default class AddStudents extends Component {
         <div className="boxHeading">
           <h1>Add Students</h1>
         </div>
-        <form className="studentsFormWrap" tabIndex="0" onKeyPress={this.handleKeyPress}>
+        <form
+          className="studentsFormWrap"
+          tabIndex="0"
+          onKeyPress={this.handleKeyPress}
+        >
           <input
             type="text"
             placeholder="Name"
@@ -79,7 +82,7 @@ export default class AddStudents extends Component {
             value={this.state.grade}
             onChange={this.handleChange}
           />
-          <input type="button" value="Submit" onClick={this.submitForm}/>
+          <input type="button" value="Submit" onClick={this.submitForm} />
         </form>
       </div>
     );

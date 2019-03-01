@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Select from "react-select";
 import axios from "axios";
 import Modal from "react-modal";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 import "./Behaviors.css";
 Modal.setAppElement("#root");
 var students = [];
@@ -58,7 +60,6 @@ const menuStyle = (base, state) => {
 
 const optionStyle = (base, state) => {
   let changes = {
-
     "&:hover": {
       backgroundColor: "var(--contentBg-color)",
       cursor: "pointer"
@@ -78,6 +79,9 @@ const selectStyles = {
   menu: menuStyle,
   option: optionStyle
 };
+
+var d = new Date();
+var timestamp = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 
 const goalOptions = [
   {
@@ -113,16 +117,51 @@ const appropriateOption = [
   { value: "inappropriate", label: "Inappropriate behavior/Not Independent" }
 ];
 
+const inappropriatePromptOption = [
+  { value: "appropriate", label: "Verbal Prompt" }
+];
+
+const columns = [
+  {
+    Header: "Timestamp",
+    accessor: "timestamp"
+  },
+  {
+    Header: "Goal",
+    accessor: "goal"
+  },
+  {
+    Header: "Outcome",
+    accessor: "outcome"
+  },
+  {
+    Header: "If inappropriate, prompting needed?",
+    accessor: "inappropriate"
+  },
+  {
+    Header: "Comment",
+    accessor: "comment"
+  },
+  {
+    Header: "%age of Appropriateness",
+    accessor: "percentage"
+  }
+];
+
 export default class Behaviors extends Component {
   constructor(props) {
     super(props);
 
     this.initialState = {
       students: students,
+      timestamp: timestamp,
       selectedStudent: "",
       selectedGoal: "",
-      selectedOutcome: ""
-      
+      selectedOutcome: "",
+      selectedPrompt: "",
+      selectedComment: "",
+      data: [
+      ]
     };
 
     this.state = this.initialState;
@@ -130,6 +169,38 @@ export default class Behaviors extends Component {
 
   componentDidMount = () => {
     this.retrieveStudents();
+  };
+
+  handleStudentChange = val => {
+    this.setState({
+      selectedStudent: val.label
+    });
+  };
+
+  handleGoalChange = val => {
+    this.setState({
+      selectedGoal: val.label
+    });
+  };
+
+  handleOutcomeChange = val => {
+    this.setState({
+      selectedOutcome: val.value
+    });
+  };
+
+  hnadlePromptChange = val => {
+    this.setState({
+      selectedPrompt: val.value
+    });
+  };
+
+  handleCommentChange = event => {
+    const { value } = event.target;
+
+    this.setState({
+      selectedComment: value
+    });
   };
 
   retrieveStudents = () => {
@@ -143,6 +214,24 @@ export default class Behaviors extends Component {
       });
   };
 
+  submitForm = () => {
+    var x = {
+      timestamp: this.state.timestamp,
+      goal: this.state.selectedGoal,
+      outcome: this.state.selectedOutcome,
+      inappropriate: this.state.selectedPrompt,
+      comment: this.state.selectedComment,
+      percentage: "0"
+    };
+    this.setState({ data: [...this.state.data, x] });
+  };
+
+  handleKeyPress = event => {
+    if (event.key == "Enter") {
+      this.submitForm();
+    }
+  };
+
   render() {
     const studentOptions = this.state.students.map((student, index) => {
       return {
@@ -154,28 +243,55 @@ export default class Behaviors extends Component {
     });
 
     return (
-      <div className="dbTestContainer">
-        <div className="addStudentsContainer">
+      <div className="behaviorsContainer">
+        <div className="dynamicTableContainer">
+          <ReactTable
+            columns={columns}
+            data={this.state.data}
+            className="behaviorTable"
+            showPaginationBottom={false}
+            resizable={false}
+          />
+        </div>
+        <div className="inputStudentsContainer">
           <div className="behaviorsForm">
             <div className="boxHeading">
               <h1>Input Behaviors</h1>
             </div>
             <form className="studentsFormWrap" tabIndex="0">
               <div className="selectGrid">
+                <input
+                  placeholder={timestamp}
+                  onChange={this.handleCommentChange}
+                  readOnly
+                />
                 <Select
                   options={studentOptions}
-                  placeholder={"Select Student"}
+                  placeholder={"Student"}
                   styles={selectStyles}
+                  onChange={this.handleStudentChange}
                 />
                 <Select
                   options={goalOptions}
-                  placeholder={"Select Goal"}
+                  placeholder={"Goal"}
                   styles={selectStyles}
+                  onChange={this.handleGoalChange}
                 />
                 <Select
                   options={appropriateOption}
-                  placeholder={"Select Goal Outcome"}
+                  placeholder={"Goal Outcome"}
                   styles={selectStyles}
+                  onChange={this.handleOutcomeChange}
+                />
+                <Select
+                  options={inappropriatePromptOption}
+                  placeholder={"Prompting Needed?"}
+                  styles={selectStyles}
+                  onChange={this.hnadlePromptChange}
+                />
+                <input
+                  placeholder={"Comment"}
+                  onChange={this.handleCommentChange}
                 />
               </div>
               <input type="button" value="Submit" onClick={this.submitForm} />
