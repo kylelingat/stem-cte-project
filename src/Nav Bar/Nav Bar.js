@@ -34,7 +34,7 @@ export default class NavBar extends Component {
         <a className="nav-link">
                 <i className="menu-icon">
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon></i>
-                <span className="menu-title">Home</span>
+                <span className="menu-title">test</span>
                 <i className="menu-arrow"></i>
               </a>
         </li>

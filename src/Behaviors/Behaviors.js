@@ -121,6 +121,8 @@ const inappropriatePromptOption = [
   { value: "appropriate", label: "Verbal Prompt" }
 ];
 
+
+
 const columns = [
   {
     Header: "Timestamp",
@@ -224,6 +226,9 @@ export default class Behaviors extends Component {
       percentage: "0"
     };
     this.setState({ data: [...this.state.data, x] });
+    let obj = this.state.data.find(o => o.selectedOutcome === 'Inappropriate behavior/Not Independent');
+    console.log(obj)
+    console.log(this.state.data)
   };
 
   handleKeyPress = event => {
@@ -231,6 +236,7 @@ export default class Behaviors extends Component {
       this.submitForm();
     }
   };
+
 
   render() {
     const studentOptions = this.state.students.map((student, index) => {
