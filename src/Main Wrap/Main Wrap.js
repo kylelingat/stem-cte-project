@@ -20,7 +20,6 @@ export default class MainWrap extends Component {
   render() {
     return (
       <div className="mainWrap">
-        <HorizontalNav currPage={this.state.currPage}></HorizontalNav>
         <NavBar pageSwitchHandler={this.pageSwitchHandler} state={this.state} />
         <Main currPage={this.state.currPage} localState={this.localState} />
       </div>

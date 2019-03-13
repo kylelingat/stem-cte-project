@@ -6,6 +6,7 @@ import Select from "react-select";
 import "react-datasheet/lib/react-datasheet.css";
 
 
+
 export default class Home extends Component {
   grabData = () => {
     console.log(this.state.grid);
