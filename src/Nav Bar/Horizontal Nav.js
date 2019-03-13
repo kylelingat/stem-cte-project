@@ -7,11 +7,20 @@ import Behaviors from "../Behaviors/Behaviors.js";
 export default class HorizontalNav extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+        currSection: null
+    }
   }
+
 
   pageSwitchHandler = (t) => {
     console.log(t);
+    this.setState = ({
+        currSection: t
+    })
   };
+
 
   render() {
     let currPageHeader;

@@ -4,4 +4,9 @@
 
 .mainPageContainer {
     display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+.contentContainer {
+    background-color: green;
 }

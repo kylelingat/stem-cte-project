@@ -14,18 +14,21 @@ export default class Main extends Component {
       return (
         <div className="mainPageContainer">
           <HorizontalNav currPage={this.props.currPage} />
+          <div className="contentContainer"></div>
         </div>
       );
     } else if (this.props.currPage === "students") {
       return (
         <div className="mainPageContainer">
           <HorizontalNav currPage={this.props.currPage} />
+          <div className="contentContainer"></div>
         </div>
       );
     } else if (this.props.currPage === "behaviors") {
       return (
         <div className="mainPageContainer">
           <HorizontalNav currPage={this.props.currPage} />
+          <div className="contentContainer"></div>
         </div>
       );
     }
