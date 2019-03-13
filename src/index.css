@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Poppins');
 
 :root {
-  --sideBar-color: #252C46;
+  --sideBar-color: #2a1c33;
+  --horSideBar-color: #2d2836;
   --sideBarText-color: #BEBEBE;
   --sideBarTextHover-color: white;
   --sideBarHoverAccent-color: #39446c;
 
-  --contentBg-color: #1B2137;
-  --box-color: #1e2439;
+  --contentBg-color: #130b1f;
+  --box-color: #20192b;
   --inputFont-color: #eff6f7;
   --inputBg-color: #1B2137;
 

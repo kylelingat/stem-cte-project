@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Select from "react-select";
 import axios from "axios";
 import Modal from "react-modal";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+
 import "./Behaviors.css";
 Modal.setAppElement("#root");
 var students = [];
@@ -249,21 +248,6 @@ export default class Behaviors extends Component {
     });
 
     return (
-      <div className="behaviorsContainer">
-        <div className="dynamicTableContainer">
-          <ReactTable
-            columns={columns}
-            data={this.state.data}
-            className="behaviorTable"
-            showPaginationBottom={false}
-            resizable={false}
-          />
-        </div>
-        <div className="inputStudentsContainer">
-          <div className="behaviorsForm">
-            <div className="boxHeading">
-              <h1>Input Behaviors</h1>
-            </div>
             <form className="studentsFormWrap" tabIndex="0">
               <div className="selectGrid">
                 <input
@@ -302,9 +286,6 @@ export default class Behaviors extends Component {
               </div>
               <input type="button" value="Submit" onClick={this.submitForm} />
             </form>
-          </div>
-        </div>
-      </div>
     );
   }
 }

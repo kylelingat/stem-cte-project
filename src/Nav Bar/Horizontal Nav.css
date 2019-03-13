@@ -1,5 +1,30 @@
 .horNavBar {
     grid-column-start: 2;
     grid-column-end: span 2;
-    background-color: var(--sideBar-color);
+    background-color: var(--horSideBar-color);
 }
+
+.horNavBar--wrapper {
+    width: 95%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.currPageHeader {
+    font-size: 2em;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: white;
+}
+
+.horNavBar--list ul {
+    padding-left: 0px;
+}
+
+.horNavBar--list li {
+    display: inline;
+    margin-right: 1.5em;
+    font-family: 'Roboto';
+    color: white;
+}
+

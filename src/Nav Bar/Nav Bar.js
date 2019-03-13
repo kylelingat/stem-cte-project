@@ -31,32 +31,20 @@ export default class NavBar extends Component {
           className={homeActive}
           onClick={this.props.pageSwitchHandler.bind(this, "home")}
         >
-        <a className="nav-link">
                 <i className="menu-icon">
                 <FontAwesomeIcon icon={faHome}></FontAwesomeIcon></i>
-                <span className="menu-title">test</span>
-                <i className="menu-arrow"></i>
-              </a>
         </li>
         <li
           className={studentActive}
           onClick={this.props.pageSwitchHandler.bind(this, "students")}
         >
-        <a className="nav-link">
                 <i className="menu-icon"><FontAwesomeIcon icon={faUserGraduate}></FontAwesomeIcon></i>
-                <span className="menu-title">Students</span>
-                <i className="menu-arrow"></i>
-              </a>
         </li>
         <li
           className={behaviorActive}
           onClick={this.props.pageSwitchHandler.bind(this, "behaviors")}
         >
-                <a className="nav-link">
                 <i className="menu-icon"><FontAwesomeIcon icon={faBrain}></FontAwesomeIcon></i>
-                <span className="menu-title">Behaviors</span>
-                <i className="menu-arrow"></i>
-              </a>
         </li>
       </ul>
     );
