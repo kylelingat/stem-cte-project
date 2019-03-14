@@ -7,20 +7,10 @@ import Behaviors from "../Behaviors/Behaviors.js";
 export default class HorizontalNav extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-        currSection: null
-    }
   }
-
-
-  pageSwitchHandler = (t) => {
-    console.log(t);
-    this.setState = ({
-        currSection: t
-    })
+  state = {
+    currSection: null
   };
-
 
   render() {
     let currPageHeader;
@@ -43,15 +33,19 @@ export default class HorizontalNav extends Component {
     } else if (this.props.currPage === "students") {
       horNavBarList = (
         <ul>
-          <li onClick={this.pageSwitchHandler.bind(this, 'bleh')}>Student Database</li>
-          <li onClick={this.pageSwitchHandler.bind(this, 'blesaashhh')}>Add Students</li>
+          <li onClick={this.props.secSwitch.bind(this, "addStudents")}>
+            Add Students
+          </li>
+          <li onClick={this.props.secSwitch.bind(this, "database")}>
+            Student Database
+          </li>
         </ul>
       );
     } else if (this.props.currPage === "behaviors") {
       horNavBarList = (
         <ul>
-          <li>Studeasdasdnt Database</li>
-          <li>Add Studeasdasnts</li>
+          <li>Input Behaviors</li>
+          <li>Behavior Table</li>
         </ul>
       );
     }
