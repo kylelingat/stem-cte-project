@@ -172,12 +172,6 @@ export default class DbTest extends Component {
             loading={this.state.modalLoading}
           />
         </div>
-        <div className="addStudentsContainer">
-          <AddStudents
-            retrieveStudents={this.retrieveStudents}
-            modalLoading={this.modalLoading}
-          />
-        </div>
         <Modal
           contentLabel="Example Modal"
           isOpen={this.state.modalIsOpen}

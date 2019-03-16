@@ -1,11 +1,13 @@
 .horNavBar {
     background-color: var(--horSideBar-color);
+    height: 120px;
 }
 
 .horNavBar--wrapper {
-    width: 95%;
+
     margin: auto;
     margin-top: 1em;
+    margin-left: 1em;
 }
 
 .currPageHeader {
@@ -22,7 +24,20 @@
 .horNavBar--list li {
     display: inline;
     margin-right: 1.5em;
-    font-family: 'Roboto';
+    font-family: 'Poppins';
     color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s all;
 }
+
+/* .horNavBar--list li:hover {
+    border-bottom: 3px solid pink;
+}
+ */
+
+ .secBorder {
+     border-bottom: 3px solid pink !important; 
+ }
 

@@ -11,13 +11,27 @@ export default class Main extends Component {
     super(props);
 
     this.state = {
-      currSection: null
+      currHomeSection: null,
+      currStudentSection: 'addStudents',
+      currBehaviorSection: null
     };
   }
 
-  sectionSwitchHandler = section => {
-    this.setState({ currSection: section }, () => {
-      console.log(this.state.currSection);
+  homeSecHandler = section => {
+    this.setState({ currHomeSection: section }, () => {
+      console.log(this.state.currHomeSection);
+    });
+  };
+
+  studSecHandler = section => {
+    this.setState({ currStudentSection: section }, () => {
+      console.log(this.state.currStudentSection);
+    });
+  };
+
+  behaviorSecHandler = section => {
+    this.setState({ currBehaviorSection: section }, () => {
+      console.log(this.state.currBehaviorSection);
     });
   };
 
@@ -37,11 +51,12 @@ export default class Main extends Component {
         <div className="mainPageContainer">
           <HorizontalNav
             currPage={this.props.currPage}
-            secSwitch={this.sectionSwitchHandler}
+            currStudentSection={this.state.currStudentSection}
+            secSwitch={this.studSecHandler}
           />
           <Section
             currPage={this.props.currPage}
-            currSection={this.state.currSection}
+            currStudentSection={this.state.currStudentSection}
           />
         </div>
       );

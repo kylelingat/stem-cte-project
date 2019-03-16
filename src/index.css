@@ -6,12 +6,14 @@
   --sideBarText-color: #BEBEBE;
   --sideBarTextHover-color: white;
   --sideBarHoverAccent-color: #39446c;
+  --contentContainer-color: #130b1f;
 
   --contentBg-color: #130b1f;
   --box-color: #20192b;
   --inputFont-color: #eff6f7;
   --inputBg-color: #1B2137;
 
+  --tableRow-color: #2d2636;
   --tableRowHov-color: #2c3453;
 }
 

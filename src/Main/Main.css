@@ -8,5 +8,5 @@
 }
 
 .contentContainer {
-    background-color: #130b1f;
+    background-color: var(--contentContainer-color);
 }

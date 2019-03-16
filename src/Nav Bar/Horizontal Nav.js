@@ -8,12 +8,11 @@ export default class HorizontalNav extends Component {
   constructor(props) {
     super(props);
   }
-  state = {
-    currSection: null
-  };
 
   render() {
     let currPageHeader;
+    let currSecBorder;
+
     if (this.props.currPage === "home") {
       currPageHeader = "Home";
     } else if (this.props.currPage === "students") {
@@ -33,10 +32,22 @@ export default class HorizontalNav extends Component {
     } else if (this.props.currPage === "students") {
       horNavBarList = (
         <ul>
-          <li onClick={this.props.secSwitch.bind(this, "addStudents")}>
+          <li
+            className={
+              this.props.currStudentSection === "addStudents"
+                ? "secBorder"
+                : null
+            }
+            onClick={this.props.secSwitch.bind(this, "addStudents")}
+          >
             Add Students
           </li>
-          <li onClick={this.props.secSwitch.bind(this, "database")}>
+          <li
+            className={
+              this.props.currStudentSection === "database" ? "secBorder" : null
+            }
+            onClick={this.props.secSwitch.bind(this, "database")}
+          >
             Student Database
           </li>
         </ul>

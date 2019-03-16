@@ -1,9 +1,8 @@
 .dbTestContainer {
   background-color: var(--contentBg-color);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 30px;
-  padding: 20px;
   overflow: scroll;
 }
 
@@ -11,26 +10,22 @@
   background-color: white;
 }
 
-.reactTableContainer {
-}
 .ReactTable {
   border: 0px solid white !important;
   border-radius: 10px;
   background-color: var(--box-color);
   width: 100%;
   height: 500px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
   margin: auto;
 }
 
 .rt-thead {
-  background-color: var(--sideBar-color);
+  background-color: var(--horSideBar-color);
   height: 50px;
 }
 
 .rt-th {
+  margin-left: 1em;
   color: white;
   font-family: "Poppins", sans-serif;
   text-align: left;
@@ -39,7 +34,10 @@
   border-bottom: 2px solid transparent;
   border-right: 0px solid !important;
   transition: all 0.3s !important;
-  padding: 10px !important;
+}
+
+.rt-th:last-child {
+  margin-right: 1em;
 }
 
 .rt-th:nth-child(3),
@@ -61,7 +59,8 @@
 
 .rt-tbody {
   background-color: var(--box-color);
-  border-radius: 0px 0px 10px 10px;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .rt-td {
@@ -69,6 +68,7 @@
 }
 
 .rt-tr-group {
+  background-color: var(--tableRow-color);
   border-bottom: 0px solid white !important;
   padding: 5px;
   margin-top: 10px;
