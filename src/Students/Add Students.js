@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+let students;
+
 export default class AddStudents extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,6 @@ export default class AddStudents extends Component {
   };
 
   submitForm = () => {
-    this.props.modalLoading();
     axios
       .post("https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/post", {
         first_name: this.state.firstName,
@@ -32,7 +33,6 @@ export default class AddStudents extends Component {
       })
       .then(response => {
         console.log(response);
-        this.props.modalLoading();
         this.props.retrieveStudents();
       })
       .catch(function(error) {
@@ -53,37 +53,36 @@ export default class AddStudents extends Component {
         <div className="boxHeading">
           <h1>Add Students</h1>
         </div>
-        <form
-          className="studentsFormWrap"
-          tabIndex="0"
-          onKeyPress={this.handleKeyPress}
-        >
-          <input
-            type="text"
-            placeholder="Name"
-            name="firstName"
-            autoComplete="off"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            name="lastName"
-            autoComplete="off"
-            value={this.state.lastName}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Grade Level"
-            name="grade"
-            autoComplete="off"
-            value={this.state.grade}
-            onChange={this.handleChange}
-          />
-          <input type="button" value="Submit" onClick={this.submitForm} />
-        </form>
+        <div className="studentsFormWrap">
+          {" "}
+          <form tabIndex="0" onKeyPress={this.handleKeyPress}>
+            <input
+              type="text"
+              placeholder="Name"
+              name="firstName"
+              autoComplete="off"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastName"
+              autoComplete="off"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Grade Level"
+              name="grade"
+              autoComplete="off"
+              value={this.state.grade}
+              onChange={this.handleChange}
+            />
+            <input type="button" value="Submit" onClick={this.submitForm} />
+          </form>
+        </div>
       </div>
     );
   }

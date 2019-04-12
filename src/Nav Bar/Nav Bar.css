@@ -41,21 +41,23 @@
   border-radius: 50%;
 }
 
-.menu-icon:hover {
+/* .menu-icon:hover {
     background-color: rgba(255,255,255,0.1);
     border-radius: 50%
-}
+} */
 
 .menu-icon svg {
-  font-size: 2em;
-  width: 20px !important;
+  font-size: 20px;
+  border-radius: 50%;
   text-align: center;
   transition: 0.3s all;
-  padding: 5px;
+  padding: 13px;
+  cursor: pointer;
 }
 
-/* .menu-icon svg:hover {
-} */
+.menu-icon svg:hover {
+  background-color: rgba(255,255,255,0.1);
+}
 
 .menu-title {
   color: inherit;

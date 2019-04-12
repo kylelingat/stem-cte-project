@@ -1,23 +1,29 @@
 .horNavBar {
     background-color: var(--horSideBar-color);
-    height: 120px;
+    height: 100%;
 }
 
 .horNavBar--wrapper {
-
     margin: auto;
     margin-top: 1em;
     margin-left: 1em;
+    margin-right: 1em;
 }
+
+
 
 .currPageHeader {
     font-size: 2em;
+    height: 60px;
     font-family: 'Poppins';
     font-weight: bolder;
     color: white;
+    display: grid;
+    grid-template-columns: 80% 20%;
 }
 
 .horNavBar--list ul {
+    margin-top: 0px;
     padding-left: 0px;
 }
 
@@ -41,3 +47,33 @@
      border-bottom: 3px solid pink !important; 
  }
 
+.rightNav {
+    /* background-color: red; */
+}
+
+.rightNavGrid {
+    /* background-color: blue; */
+    display: grid;
+    height: 100%;
+    grid-template-columns: 30% 30%;
+}
+
+.rightNavGridIcon {
+    background-color: red;
+    padding: 10px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    transition: 0.3s all;
+}
+
+.ReactModal__Overlay--after-open {
+    background-color: rgba(0,0,0,0) !important;
+}

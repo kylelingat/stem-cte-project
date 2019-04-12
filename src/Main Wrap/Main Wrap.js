@@ -10,6 +10,8 @@ export default class MainWrap extends Component {
     currPage: localStorage.getItem("currPage")
   };
 
+  
+
   pageSwitchHandler = (page) => {
     localStorage.setItem("currPage", page);
     this.setState({

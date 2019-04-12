@@ -5,6 +5,9 @@ import Students from "../Students/Students.js";
 import Behaviors from "../Behaviors/Behaviors.js";
 import HorizontalNav from "../Nav Bar/Horizontal Nav.js";
 import Section from "./Section.js";
+import axios from "axios";
+
+let students;
 
 export default class Main extends Component {
   constructor(props) {
@@ -12,8 +15,9 @@ export default class Main extends Component {
 
     this.state = {
       currHomeSection: null,
-      currStudentSection: 'addStudents',
-      currBehaviorSection: null
+      currStudentSection: 'database',
+      currBehaviorSection: null,
+      students: null
     };
   }
 
@@ -35,6 +39,21 @@ export default class Main extends Component {
     });
   };
 
+  componentDidMount = () => {
+    this.retrieveStudents();
+  };
+
+  retrieveStudents = () => {
+    axios
+      .get(`https://v4pq771b89.execute-api.us-west-2.amazonaws.com/dev/get`)
+      .then(res => {
+        students = res.data.message.rows;
+        this.setState({
+          students: students
+        });
+      });
+  };
+
   render() {
     if (this.props.currPage === "home") {
       return (
@@ -53,6 +72,7 @@ export default class Main extends Component {
             currPage={this.props.currPage}
             currStudentSection={this.state.currStudentSection}
             secSwitch={this.studSecHandler}
+            retrieveStudents={this.retrieveStudents}
           />
           <Section
             currPage={this.props.currPage}
