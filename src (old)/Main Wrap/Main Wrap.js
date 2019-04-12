@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Main Wrap.css";
 import NavBar from "../Nav Bar/Nav Bar.js";
-import HorizontalNav from '../Nav Bar/Horizontal Nav.js';
 import Main from "../Main/Main.js";
 
 

@@ -1,12 +1,3 @@
-.main {
-    background-color: red;
-}
-
-.mainPageContainer {
-    display: grid;
-    grid-template-rows: 120px 100%;
-}
-
-.contentContainer {
-    background-color: var(--contentContainer-color);
+.mainContainer {
+    background-color: blue;
 }

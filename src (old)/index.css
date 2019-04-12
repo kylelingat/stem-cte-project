@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Poppins');
+
+:root {
+  --sideBar-color: #2a1c33;
+  --horSideBar-color: #2d2836;
+  --sideBarText-color: #BEBEBE;
+  --sideBarTextHover-color: white;
+  --sideBarHoverAccent-color: #39446c;
+  --contentContainer-color: #130b1f;
+
+  --contentBg-color: #130b1f;
+  --box-color: #20192b;
+  --inputFont-color: #eff6f7;
+  --inputBg-color: #1B2137;
+
+  --tableRow-color: #2d2636;
+  --tableRowHov-color: #2c3453;
+}
+
+[tabindex] {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  background-color: var(--sideBar-color);
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
