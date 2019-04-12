@@ -3,6 +3,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 10% 90%;
+  color: white;
 }
 
 .App-logo {
