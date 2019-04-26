@@ -1,3 +1,10 @@
 .mainContainer {
     background-color: var(--contentBg-color);
 }
+
+.homeContainer,
+.studentsContainer,
+.behaviorsContainer {
+    width: 100%;
+    height: 100%;
+}

@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import HorizontalNav from "../Horizontal Nav/Horizontal Nav.js";
 
 export default class Behaviors extends Component {
-    render(){
-        return(
-            <div>Behavior</div>
-        )
-    }
+  render() {
+    return (
+      <div className="behaviorsContainer">
+        <HorizontalNav currPage={this.props.currPage} />
+      </div>
+    );
+  }
 }

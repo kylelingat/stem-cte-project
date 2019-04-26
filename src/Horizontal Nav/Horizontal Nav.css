@@ -1,0 +1,32 @@
+.horNavUl {
+    margin: 0;
+    padding: 10px;
+}
+
+.horNavUl li {
+    display: inline;
+}
+
+.horNavWrap {
+    background-color: var(--horSideBar-color);
+}
+
+.horNavWrap h1 {
+    margin: 0px;
+    padding: 10px;
+}
+
+.horNavStudents {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.studentButtonsNavContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.studentButtonsNav {
+    background-color: gray;
+    border-radius: 50%;
+}
