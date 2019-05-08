@@ -1,0 +1,1 @@
+currPageValues = ['home', 'students', 'behaviors', 'dataTable']

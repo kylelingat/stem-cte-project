@@ -45,6 +45,7 @@ class App extends Component {
           currPage={this.state.currPage}
           students={this.state.students}
           retrieveStudents={this.retrieveStudents}
+          pageSwitchHandler={this.pageSwitchHandler}
         />
       </div>
     );

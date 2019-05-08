@@ -56,16 +56,17 @@ export default class HorizontalNav extends Component {
           </ul>
         </div>
       );
-    } else if (this.state.navLinks === "behaviors") {
+    } else if (this.state.navLinks === "behaviors" || this.state.navLinks === "dataTable") {
       navList = (
         <div className="horNavWrap">
           <h1>Behaviors</h1>
           <ul className="horNavUl">
             <li>Behaviors</li>
+            <li onClick={this.props.pageSwitchHandler.bind(this, 'dataTable')}>Table</li>
           </ul>
         </div>
       );
-    }
+    } 
     return navList;
   }
 }

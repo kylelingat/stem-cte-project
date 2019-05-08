@@ -5,6 +5,7 @@
 
 .horNavUl li {
     display: inline;
+    padding: 10px;
 }
 
 .horNavWrap {
