@@ -10,6 +10,7 @@
 
 .horNavWrap {
     background-color: var(--horSideBar-color);
+    height: 100%;
 }
 
 .horNavWrap h1 {

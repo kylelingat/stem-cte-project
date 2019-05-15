@@ -10,13 +10,10 @@ export default class HorizontalNav extends Component {
     super(props);
   }
 
-  state = {
-    navLinks: this.props.currPage
-  };
 
   render() {
     let navList;
-    if (this.state.navLinks === "home") {
+    if (this.props.currPage === "home") {
       navList = (
         <div className="horNavWrap">
           <h1>Home</h1>
@@ -25,7 +22,7 @@ export default class HorizontalNav extends Component {
           </ul>
         </div>
       );
-    } else if (this.state.navLinks === "students") {
+    } else if (this.props.currPage === "students") {
       navList = (
         <div className="horNavWrap horNavStudents">
           <h1>Students</h1>
@@ -56,17 +53,18 @@ export default class HorizontalNav extends Component {
           </ul>
         </div>
       );
-    } else if (this.state.navLinks === "behaviors" || this.state.navLinks === "dataTable") {
+    } 
+    else if (this.props.currPage === "behaviors") {
       navList = (
         <div className="horNavWrap">
           <h1>Behaviors</h1>
           <ul className="horNavUl">
             <li>Behaviors</li>
-            <li onClick={this.props.pageSwitchHandler.bind(this, 'dataTable')}>Table</li>
+            <li onClick={this.props.sectionSwitchHandler.bind(this, 'dataTable')}>Table</li>
           </ul>
         </div>
       );
     } 
-    return navList;
+    return <div>{navList}</div>;
   }
 }
