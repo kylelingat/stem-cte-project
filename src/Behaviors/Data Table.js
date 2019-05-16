@@ -5,7 +5,7 @@ export default class DataTable extends Component {
   render() {
     return (
       <div className="dataTableContainer">
-        <HorizontalNav currPage={this.props.currPage}/>
+      ddddddddddddd
       </div>
     );
   }

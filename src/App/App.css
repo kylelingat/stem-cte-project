@@ -27,10 +27,12 @@
 }
 
 .homeContainer, 
-.studentContainer,
-.behaviorContainer {
+.studentsContainer,
+.behaviorsContainer,
+.inputContainer,
+.dataTableContainer {
   display: grid;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 150px auto;
 }
 
 @keyframes App-logo-spin {

@@ -59,7 +59,7 @@ export default class HorizontalNav extends Component {
         <div className="horNavWrap">
           <h1>Behaviors</h1>
           <ul className="horNavUl">
-            <li>Behaviors</li>
+            <li onClick={this.props.sectionSwitchHandler.bind(this, 'input')}>Behaviors</li>
             <li onClick={this.props.sectionSwitchHandler.bind(this, 'dataTable')}>Table</li>
           </ul>
         </div>

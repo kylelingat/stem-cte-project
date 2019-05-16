@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import HorizontalNav from "../Horizontal Nav/Horizontal Nav.js";
+import InputBehaviors from "./Input.js"
 import DataTable from './Data Table.js'
+
 let section;
 export default class Behaviors extends Component {
   constructor(props){
@@ -21,7 +23,7 @@ export default class Behaviors extends Component {
     return (
       <div className="behaviorsContainer">
         <HorizontalNav currPage={this.props.currPage} sectionSwitchHandler={this.sectionSwitchHandler} />
-        {this.state.section === "dataTable" ? <DataTable></DataTable> : 'hi'}
+        {this.state.section === "dataTable" ? <DataTable></DataTable> : <InputBehaviors></InputBehaviors>}
       </div>
     );
   }
