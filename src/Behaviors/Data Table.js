@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactToPrint from "react-to-print";
 import HorizontalNav from "../Horizontal Nav/Horizontal Nav.js";
 import ReactTable from "react-table";
 
@@ -11,7 +12,12 @@ export default class DataTable extends Component {
       <div className="dataTableContainer">
       <div className="tableButtonContainer">
         <div onClick={this.props.clearDataTable}>clear</div>
-        <div>print</div>
+        <div>      
+        <ReactToPrint
+          trigger={() => <a href="#">Print this out!</a>}
+          content={() => this.componentRef}
+        />
+      </div>
       </div>
         <div className="dynamicTableContainer">
           <ReactTable
@@ -20,12 +26,15 @@ export default class DataTable extends Component {
             className="behaviorTable"
             showPaginationBottom={false}
             resizable={false}
+            ref={el => (this.componentRef = el)}
           />
         </div>
       </div>
     );
   }
 }
+
+
 
 const columns = [
   {
