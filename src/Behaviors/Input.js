@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Select from "react-select";
 import axios from "axios";
 
-var students = []
 export default class InputBehaviors extends Component {
   constructor(props){
     super(props)
+
   }
 
   componentDidMount = () => {
@@ -19,37 +19,38 @@ export default class InputBehaviors extends Component {
       <div className="selectGrid">
                 <input
                   placeholder={timestamp}
-                  onChange={this.handleCommentChange}
+                  onChange={this.props.handleCommentChange}
                   readOnly
                 />
                 <Select
                   options={this.props.studentOptions}
                   placeholder={"Student"}
                   styles={selectStyles}
-                  onChange={this.handleStudentChange}
+                  onChange={this.props.handleStudentChange}
                 />
                 <Select
                   options={goalOptions}
                   placeholder={"Goal"}
                   styles={selectStyles}
-                  onChange={this.handleGoalChange}
+                  onChange={this.props.handleGoalChange}
                 />
                 <Select
                   options={appropriateOption}
                   placeholder={"Goal Outcome"}
                   styles={selectStyles}
-                  onChange={this.handleOutcomeChange}
+                  onChange={this.props.handleOutcomeChange}
                 />
                 <Select
                   options={inappropriatePromptOption}
                   placeholder={"Prompting Needed?"}
                   styles={selectStyles}
-                  onChange={this.hnadlePromptChange}
+                  onChange={this.props.handlePromptChange}
                 />
                 <input
                   placeholder={"Comment"}
-                  onChange={this.handleCommentChange}
+                  onChange={this.props.handleCommentChange}
                 />
+                 <input type="button" value="Submit" onClick={this.props.submitForm} />
               </div>
       </div>
     );
