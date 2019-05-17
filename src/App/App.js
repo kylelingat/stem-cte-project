@@ -8,8 +8,16 @@ let students;
 
 class App extends Component {
   state = {
-    currPage: localStorage.getItem("currPage")
+    dataFetched: false,
+    currPage: localStorage.getItem("currPage"),
+    students: [],
+    studentOptions: []
   };
+
+  async componentDidMount() {
+    this.retrieveStudents();
+  };
+
 
   retrieveStudents = () => {
     axios
@@ -19,13 +27,23 @@ class App extends Component {
         console.log(students, "retrieve student list")
         this.setState({
           students: students
+        }, function () {
+          const studentOptions = this.state.students.map((student, index) => {
+            return {
+              value: student.student_id,
+              label: `${student.last_name}, ${student.first_name} ${
+                student.grade_level
+              }`
+            };
+          });
+          this.setState({
+            studentOptions: studentOptions,
+            dataFetched: true
+          });
         });
       });
   };
 
-  componentDidMount = () => {
-    this.retrieveStudents();
-  };
 
   pageSwitchHandler = page => {
     localStorage.setItem("currPage", page);
@@ -37,17 +55,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar
-          pageSwitchHandler={this.pageSwitchHandler}
-          currPage={this.state.currPage}
-        />
-        <Main
-          currPage={this.state.currPage}
-          students={this.state.students}
-          retrieveStudents={this.retrieveStudents}
-          pageSwitchHandler={this.pageSwitchHandler}
-        />
-      </div>
+
+                <NavBar
+                pageSwitchHandler={this.pageSwitchHandler}
+                currPage={this.state.currPage}
+              />
+              <Main
+                currPage={this.state.currPage}
+                studentOptions={this.state.studentOptions}
+                students={this.state.students}
+                retrieveStudents={this.retrieveStudents}
+                pageSwitchHandler={this.pageSwitchHandler}
+              /></div>
     );
   }
 }

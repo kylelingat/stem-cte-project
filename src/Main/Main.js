@@ -10,8 +10,6 @@ export default class Main extends Component {
     super(props);
   }
 
-
-
   render() {
     if (this.props.currPage === "home") {
       return (
@@ -31,7 +29,10 @@ export default class Main extends Component {
         <div className="mainContainer">
           <Behaviors
             currPage={this.props.currPage}
+            students={this.props.students}
+            studentOptions={this.props.studentOptions}
             pageSwitchHandler={this.props.pageSwitchHandler}
+            retrieveStudents={this.props.retrieveStudents}
           />
         </div>
       )

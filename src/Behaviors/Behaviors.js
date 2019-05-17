@@ -5,7 +5,7 @@ import DataTable from './Data Table.js'
 
 let section;
 export default class Behaviors extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -23,7 +23,7 @@ export default class Behaviors extends Component {
     return (
       <div className="behaviorsContainer">
         <HorizontalNav currPage={this.props.currPage} sectionSwitchHandler={this.sectionSwitchHandler} />
-        {this.state.section === "dataTable" ? <DataTable></DataTable> : <InputBehaviors></InputBehaviors>}
+        {this.state.section === "dataTable" ? <DataTable></DataTable> : <InputBehaviors students={this.props.students} studentOptions={this.props.studentOptions} retrieveStudents={this.props.retrieveStudents}></InputBehaviors>}
       </div>
     );
   }
